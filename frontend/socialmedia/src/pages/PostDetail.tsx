@@ -53,7 +53,7 @@ const PostDetail: React.FC = () => {
       <header className="bg-gray-800 text-gray-200 p-4">
         <h1 className="text-2xl font-bold">Social Media App</h1>
       </header>
-      <main className="container mx-auto p-4">
+      <main className="gap-10 w-3/6 max-container mx-auto p-4 pt-10">
         <div className="bg-gray-800 rounded-lg shadow-md p-6 mb-6 text-gray-300">
           <h2 className="text-2xl font-bold mb-4" style={{ color: post.titleColor }}>{post.title}</h2>
           <p className="mb-4">{post.content}</p>

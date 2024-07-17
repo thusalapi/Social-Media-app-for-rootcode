@@ -34,7 +34,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ onClose, onPostCreate
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4">Create Post
+        <h2 className="text-2xl font-bold mb-4 text-black">Create Post
           <button onClick={onClose} className="float-right text-gray-500 hover:text-gray-700">&times;</button>
         </h2>
         <form onSubmit={handleSubmit}>
@@ -44,17 +44,17 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ onClose, onPostCreate
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
-            className="w-full p-2 mb-4 border border-gray-300 rounded"
+            className="w-full p-2 mb-4 border border-gray-300 rounded text-black"
           />
           <textarea
             placeholder="Description"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             required
-            className="w-full p-2 mb-4 border border-gray-300 rounded h-32"
+            className="w-full p-2 mb-4 border border-gray-300 rounded h-32 text-black"
           />
           <div className="mb-4">
-            <span className="mr-2">Title Color:</span>
+            <span className="mr-2 text-black">Title Color:</span>
             {POST_COLORS.map((color) => (
               <button
                 key={color}

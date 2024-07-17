@@ -3,6 +3,8 @@ import { getPosts } from '../services/api';
 import PostList from '../components/PostList';
 import CreatePostModal from '../components/CreatePostModal';
 import { Post } from '../types';
+import Navbar from '../components/Navbar';
+
 
 const Home: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -35,17 +37,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="bg-gray-900 min-h-screen text-gray-200">
-      <header className="bg-gray-800 text-white sticky top-0 z-10 shadow-md">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Social Media App</h1>
-          <button
-            onClick={() => setIsCreateModalOpen(true)}
-            className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition duration-300"
-          >
-            Create Post
-          </button>
-        </div>
-      </header>
+      <Navbar setIsCreateModalOpen={setIsCreateModalOpen} />
 
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
