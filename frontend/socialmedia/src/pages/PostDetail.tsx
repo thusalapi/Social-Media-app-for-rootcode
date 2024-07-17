@@ -44,30 +44,48 @@ const PostDetail: React.FC = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-  if (!post) return <div>Post not found</div>;
+  if (isLoading) return <div className="text-center mt-8">Loading...</div>;
+  if (error) return <div className="text-red-500 text-center mt-8">{error}</div>;
+  if (!post) return <div className="text-center mt-8">Post not found</div>;
 
   return (
-    <div>
-      <h2 style={{ color: post.titleColor }}>{post.title}</h2>
-      <p>{post.content}</p>
-      <h3>{comments.length} Comments</h3>
-      {comments.map((comment) => (
-        <div key={comment._id}>
-          <p>{comment.content}</p>
-          <small>{comment.author} - {new Date(comment.createdAt).toLocaleString()}</small>
+    <div className="bg-gray-100 min-h-screen">
+      <header className="bg-blue-600 text-white p-4">
+        <h1 className="text-2xl font-bold">Social Media App</h1>
+      </header>
+      <main className="container mx-auto p-4">
+        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+          <h2 className="text-2xl font-bold mb-4" style={{ color: post.titleColor }}>{post.title}</h2>
+          <p className="text-gray-700 mb-4">{post.content}</p>
+          <span className="text-gray-500">Posted by {post.author}</span>
         </div>
-      ))}
-      <form onSubmit={handleCommentSubmit}>
-        <textarea
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          placeholder="New Comment Text"
-          required
-        />
-        <button type="submit">Comment</button>
-      </form>
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h3 className="text-xl font-bold mb-4">{comments.length} Comments</h3>
+          {comments.map((comment) => (
+            <div key={comment._id} className="mb-4 pb-4 border-b last:border-b-0">
+              <p className="text-gray-700">{comment.content}</p>
+              <span className="text-gray-500 text-sm">
+                {comment.author} - {new Date(comment.createdAt).toLocaleString()}
+              </span>
+            </div>
+          ))}
+          <form onSubmit={handleCommentSubmit} className="mt-6">
+            <textarea
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              placeholder="Write a comment..."
+              required
+              className="w-full p-2 mb-4 border border-gray-300 rounded"
+            />
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
+            >
+              Comment
+            </button>
+          </form>
+        </div>
+      </main>
     </div>
   );
 };

@@ -31,50 +31,48 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ onClose, onPostCreate
   };
 
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '5px', maxWidth: '500px', width: '100%' }}>
-        <h2>Create Post <button onClick={onClose} style={{ float: 'right', border: 'none', background: 'none', fontSize: '1.5em', cursor: 'pointer' }}>×</button></h2>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+      <div className="bg-white rounded-lg p-6 w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-4">Create Post
+          <button onClick={onClose} className="float-right text-gray-500 hover:text-gray-700">&times;</button>
+        </h2>
         <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: '10px' }}>
-            <input 
-              type="text" 
-              placeholder="Title" 
-              value={title} 
-              onChange={(e) => setTitle(e.target.value)} 
-              required 
-              style={{ width: '100%', padding: '5px' }}
-            />
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            className="w-full p-2 mb-4 border border-gray-300 rounded"
+          />
+          <textarea
+            placeholder="What's on your mind?"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+            className="w-full p-2 mb-4 border border-gray-300 rounded h-32"
+          />
+          <div className="mb-4">
+            <span className="mr-2">Title Color:</span>
+            {['#1D4ED8', '#EF4444', '#22C55E'].map((color) => (
+              <button
+                key={color}
+                type="button"
+                onClick={() => setTitleColor(color)}
+                className={`w-6 h-6 rounded-full mr-2 ${titleColor === color ? 'ring-2 ring-offset-2 ring-gray-500' : ''}`}
+                style={{ backgroundColor: color }}
+              />
+            ))}
           </div>
-          <div style={{ marginBottom: '10px' }}>
-            <textarea 
-              placeholder="Description" 
-              value={content} 
-              onChange={(e) => setContent(e.target.value)} 
-              required 
-              style={{ width: '100%', height: '100px', padding: '5px' }}
-            />
-          </div>
-          <div style={{ marginBottom: '10px' }}>
-            Title Color:
-            <button type="button" onClick={() => setTitleColor('blue')} style={{ backgroundColor: 'blue', width: '20px', height: '20px', margin: '0 5px', border: titleColor === 'blue' ? '2px solid black' : 'none' }}></button>
-            <button type="button" onClick={() => setTitleColor('yellow')} style={{ backgroundColor: 'yellow', width: '20px', height: '20px', margin: '0 5px', border: titleColor === 'yellow' ? '2px solid black' : 'none' }}></button>
-            <button type="button" onClick={() => setTitleColor('red')} style={{ backgroundColor: 'red', width: '20px', height: '20px', margin: '0 5px', border: titleColor === 'red' ? '2px solid black' : 'none' }}></button>
-          </div>
-          {error && <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
-          <button 
-            type="submit" 
+          {error && <div className="text-red-500 mb-4">{error}</div>}
+          <button
+            type="submit"
             disabled={isSubmitting}
-            style={{ 
-              width: '100%', 
-              padding: '10px', 
-              backgroundColor: '#007bff', 
-              color: 'white', 
-              border: 'none', 
-              borderRadius: '5px',
-              cursor: isSubmitting ? 'not-allowed' : 'pointer'
-            }}
+            className={`w-full p-2 text-white rounded ${
+              isSubmitting ? 'bg-blue-300' : 'bg-blue-500 hover:bg-blue-600'
+            }`}
           >
-            {isSubmitting ? 'Publishing...' : 'Publish'}
+            {isSubmitting ? 'Posting...' : 'Post'}
           </button>
         </form>
       </div>

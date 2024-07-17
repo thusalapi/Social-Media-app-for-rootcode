@@ -7,13 +7,15 @@ interface PostListProps {
 }
 
 const PostList: React.FC<PostListProps> = ({ posts }) => (
-  <div>
+  <div className="space-y-4">
     {posts.map((post) => (
       <Link key={post._id} to={`/post/${post._id}`}>
-        <div style={{ border: '1px solid #ccc', margin: '10px 0', padding: '10px' }}>
-          <h3 style={{ color: post.titleColor }}>{post.title}</h3>
-          <p>{post.content.substring(0, 100)}...</p>
-          <span>{post.commentCount || 0} Comments</span>
+        <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-200">
+          <h3 className="text-xl font-semibold mb-2" style={{ color: post.titleColor }}>
+            {post.title}
+          </h3>
+          <p className="text-gray-600 mb-2">{post.content.substring(0, 100)}...</p>
+          <span className="text-blue-500">{post.commentCount || 0} Comments</span>
         </div>
       </Link>
     ))}
