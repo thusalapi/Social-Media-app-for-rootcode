@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createPost } from '../services/api';
+import { POST_COLORS } from '../constants';
 
 interface CreatePostModalProps {
   onClose: () => void;
@@ -46,7 +47,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ onClose, onPostCreate
             className="w-full p-2 mb-4 border border-gray-300 rounded"
           />
           <textarea
-            placeholder="What's on your mind?"
+            placeholder="Description"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             required
@@ -54,7 +55,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ onClose, onPostCreate
           />
           <div className="mb-4">
             <span className="mr-2">Title Color:</span>
-            {['#1D4ED8', '#EF4444', '#22C55E'].map((color) => (
+            {POST_COLORS.map((color) => (
               <button
                 key={color}
                 type="button"

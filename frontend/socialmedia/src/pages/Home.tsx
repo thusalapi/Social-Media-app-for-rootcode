@@ -34,13 +34,13 @@ const Home: React.FC = () => {
   }, [fetchPosts]);
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <header className="bg-blue-600 text-white sticky top-0 z-10 shadow-md">
+    <div className="bg-gray-900 min-h-screen text-gray-200">
+      <header className="bg-gray-800 text-white sticky top-0 z-10 shadow-md">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Facebook-like App</h1>
+          <h1 className="text-2xl font-bold">Social Media App</h1>
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+            className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition duration-300"
           >
             Create Post
           </button>
@@ -51,11 +51,11 @@ const Home: React.FC = () => {
         <div className="max-w-2xl mx-auto">
           {isLoading ? (
             <div className="text-center py-10">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
-              <p className="mt-4 text-gray-600">Loading posts...</p>
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-600 mx-auto"></div>
+              <p className="mt-4 text-gray-400">Loading posts...</p>
             </div>
           ) : error ? (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <div className="bg-red-900 border border-red-700 text-red-300 px-4 py-3 rounded relative" role="alert">
               <strong className="font-bold">Error: </strong>
               <span className="block sm:inline">{error}</span>
             </div>

@@ -49,21 +49,21 @@ const PostDetail: React.FC = () => {
   if (!post) return <div className="text-center mt-8">Post not found</div>;
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <header className="bg-blue-600 text-white p-4">
+    <div className="bg-gray-900 min-h-screen">
+      <header className="bg-gray-800 text-gray-200 p-4">
         <h1 className="text-2xl font-bold">Social Media App</h1>
       </header>
       <main className="container mx-auto p-4">
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div className="bg-gray-800 rounded-lg shadow-md p-6 mb-6 text-gray-300">
           <h2 className="text-2xl font-bold mb-4" style={{ color: post.titleColor }}>{post.title}</h2>
-          <p className="text-gray-700 mb-4">{post.content}</p>
-          <span className="text-gray-500">Posted by {post.author}</span>
+          <p className="mb-4">{post.content}</p>
+          <span>Posted by {post.author}</span>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-gray-800 rounded-lg shadow-md p-6 text-gray-300">
           <h3 className="text-xl font-bold mb-4">{comments.length} Comments</h3>
           {comments.map((comment) => (
-            <div key={comment._id} className="mb-4 pb-4 border-b last:border-b-0">
-              <p className="text-gray-700">{comment.content}</p>
+            <div key={comment._id} className="mb-4 pb-4 border-b border-gray-700 last:border-b-0">
+              <p>{comment.content}</p>
               <span className="text-gray-500 text-sm">
                 {comment.author} - {new Date(comment.createdAt).toLocaleString()}
               </span>
@@ -75,11 +75,11 @@ const PostDetail: React.FC = () => {
               onChange={(e) => setNewComment(e.target.value)}
               placeholder="Write a comment..."
               required
-              className="w-full p-2 mb-4 border border-gray-300 rounded"
+              className="w-full p-2 mb-4 border border-gray-700 rounded bg-gray-700 text-gray-300"
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
+              className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition duration-200"
             >
               Comment
             </button>
