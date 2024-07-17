@@ -21,6 +21,7 @@ const PostList: React.FC<PostListProps> = ({ posts }) => (
             <p className="text-gray-400 mb-2">
               {post.content.substring(0, 100)}...
             </p>
+            <hr className="border-t border-gray-700 mt-8 mb-2" />
             <div className="flex justify-end">
               <span className="text-blue-400">
                 {post.commentCount || 0} Comments
@@ -28,7 +29,6 @@ const PostList: React.FC<PostListProps> = ({ posts }) => (
             </div>
           </div>
         </Link>
-        {/* <hr className="my-4 border-t border-gray-700" />{" "} */}
       </>
     ))}
   </div>
