@@ -8,6 +8,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/foo', (req, res) => {
+    res.json({ message: 'Hello, World!' });
+    });
 app.use('/api/posts', postRoutes);
 app.use('/api/comments', commentRoutes);
 
