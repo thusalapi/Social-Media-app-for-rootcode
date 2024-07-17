@@ -2,8 +2,13 @@ import express from 'express';
 import cors from 'cors';
 import postRoutes from './routes/postRoutes.js';
 import commentRoutes from './routes/commentRoutes.js';
+import dotenv from 'dotenv'; 
+dotenv.config();
+
+console.log(process.env.MONGO_URI);
 
 const app = express();
+
 
 app.use(cors());
 app.use(express.json());
